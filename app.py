@@ -78,7 +78,7 @@ with st.sidebar:
     st.markdown("---")
     st.markdown("### Navigation")
     st.markdown("🏠  **Home**")
-   st.caption("Use the navigation menu below ⬇️ to explore each section.")
+    st.caption("Use the navigation menu below ⬇️ to explore each section.")
     st.markdown("---")
     st.caption("Built by odianosen | AltSchool Africa")
     st.caption("Data Science Portfolio Project")
