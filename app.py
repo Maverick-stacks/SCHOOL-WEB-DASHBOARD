@@ -77,7 +77,7 @@ with st.sidebar:
     st.markdown("*Turning data into early intervention*")
     st.markdown("---")
     st.markdown("### Navigation")
-    st.page_link("app.py",                          label="🏠  Home",                  icon=None)
+    st.markdown("🏠  **Home**")
     st.page_link("pages/01_executive_overview.py",  label="📊  Executive Overview")
     st.page_link("pages/02_early_warning.py",       label="🚨  Early Warning Center")
     st.page_link("pages/03_student_explorer.py",    label="🔍  Student Explorer")
