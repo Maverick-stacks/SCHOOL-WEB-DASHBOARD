@@ -70,80 +70,92 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-# ── Sidebar ───────────────────────────────────────────────
+
+# ── Home page content (registered below as a Page) ───────
+def home_page():
+    st.markdown("""
+    <div class="ssip-header">
+      <h1>🎓 Student Success Intelligence Platform</h1>
+      <p>AI-powered educational analytics and early intervention system for Nigerian secondary schools</p>
+    </div>
+    """, unsafe_allow_html=True)
+
+    col1, col2 = st.columns([3,2])
+    with col1:
+        st.markdown("### The Problem Schools Face Today")
+        st.markdown("""
+        <div class="warning-card">
+          <p>📌 A student starts missing classes.</p>
+          <p>📌 Assignments are submitted late — then not at all.</p>
+          <p>📌 Scores decline quietly over one term.</p>
+          <p>📌 The teacher notices. <strong style='color:#f87171'>After the damage is done.</strong></p>
+        </div>
+        """, unsafe_allow_html=True)
+
+        st.markdown("### What SSIP Changes")
+        st.markdown("""
+        <div class="success-card">
+          <p>✅ <strong style='color:#4ade80'>Early Warning Center</strong> — flags at-risk students before failure occurs</p>
+          <p>✅ <strong style='color:#4ade80'>Student Explorer</strong> — reveals the <em>why</em> behind every risk score</p>
+          <p>✅ <strong style='color:#4ade80'>Scenario Simulator</strong> — shows what happens if the school intervenes</p>
+        </div>
+        """, unsafe_allow_html=True)
+
+    with col2:
+        st.markdown("### Platform at a Glance")
+        st.markdown("""
+        | Layer | Answers |
+        |-------|---------|
+        | 📊 Descriptive | What is happening? |
+        | 🔍 Diagnostic | Why is it happening? |
+        | 🤖 Predictive | What will happen? |
+        | 💡 Prescriptive | What should we do? |
+        """)
+        st.markdown("### 9 Custom Intelligence Indices")
+        indices = [
+            ("SSI","Student Success Index"),
+            ("EI", "Engagement Index"),
+            ("PSI","Parent Support Index"),
+            ("RAI","Resource Accessibility Index"),
+            ("WBI","Wellbeing Index"),
+            ("ARI","Academic Resilience Index"),
+            ("WRI","WAEC Readiness Index"),
+            ("SNI","Support Need Index"),
+            ("DVI","Dropout Vulnerability Index"),
+        ]
+        for code, name in indices:
+            st.markdown(f"**`{code}`** — {name}")
+
+    st.markdown("---")
+    st.info("👈 Use the sidebar to navigate to any section of the platform.")
+
+
+# ── Sidebar branding (shows on every page) ────────────────
 with st.sidebar:
     st.markdown("## 🎓 SSIP")
     st.markdown("**Student Success Intelligence Platform**")
     st.markdown("*Turning data into early intervention*")
     st.markdown("---")
-    st.markdown("### Navigation")
-    st.markdown("🏠  **Home**")
-    st.page_link("pages/01_executive_overview.py",  label="📊  Executive Overview")
-    st.page_link("pages/02_early_warning.py",       label="🚨  Early Warning Center")
-    st.page_link("pages/03_student_explorer.py",    label="🔍  Student Explorer")
-    st.page_link("pages/04_academic_intel.py",      label="📚  Academic Intelligence")
-    st.page_link("pages/05_wellbeing.py",           label="💚  Wellbeing Intelligence")
-    st.page_link("pages/06_predictive.py",          label="🤖  Predictive Analytics")
-    st.page_link("pages/07_segmentation.py",        label="🗂️  Student Segmentation")
-    st.page_link("pages/08_scenario_simulator.py",  label="⚙️  Scenario Simulator")
-    st.page_link("pages/09_recommendations.py",     label="💡  Recommendation Center")
+
+# ── Explicit page registration (works regardless of Streamlit version) ──
+pages = [
+    st.Page(home_page, title="Home", icon="🏠", default=True),
+    st.Page("pages/01_executive_overview.py", title="Executive Overview",   icon="📊"),
+    st.Page("pages/02_early_warning.py",      title="Early Warning Center", icon="🚨"),
+    st.Page("pages/03_student_explorer.py",   title="Student Explorer",    icon="🔍"),
+    st.Page("pages/04_academic_intel.py",     title="Academic Intelligence", icon="📚"),
+    st.Page("pages/05_wellbeing.py",          title="Wellbeing Intelligence", icon="💚"),
+    st.Page("pages/06_predictive.py",         title="Predictive Analytics", icon="🤖"),
+    st.Page("pages/07_segmentation.py",       title="Student Segmentation", icon="🗂️"),
+    st.Page("pages/08_scenario_simulator.py", title="Scenario Simulator",   icon="⚙️"),
+    st.Page("pages/09_recommendations.py",    title="Recommendation Center", icon="💡"),
+]
+
+pg = st.navigation(pages)
+
+with st.sidebar:
     st.markdown("---")
     st.caption("Built by odianosen | AltSchool Africa")
     st.caption("Data Science Portfolio Project")
 
-# ── Home page ─────────────────────────────────────────────
-st.markdown("""
-<div class="ssip-header">
-  <h1>🎓 Student Success Intelligence Platform</h1>
-  <p>AI-powered educational analytics and early intervention system for Nigerian secondary schools</p>
-</div>
-""", unsafe_allow_html=True)
-
-col1, col2 = st.columns([3,2])
-with col1:
-    st.markdown("### The Problem Schools Face Today")
-    st.markdown("""
-    <div class="warning-card">
-      <p>📌 A student starts missing classes.</p>
-      <p>📌 Assignments are submitted late — then not at all.</p>
-      <p>📌 Scores decline quietly over one term.</p>
-      <p>📌 The teacher notices. <strong style='color:#f87171'>After the damage is done.</strong></p>
-    </div>
-    """, unsafe_allow_html=True)
-
-    st.markdown("### What SSIP Changes")
-    st.markdown("""
-    <div class="success-card">
-      <p>✅ <strong style='color:#4ade80'>Early Warning Center</strong> — flags at-risk students before failure occurs</p>
-      <p>✅ <strong style='color:#4ade80'>Student Explorer</strong> — reveals the <em>why</em> behind every risk score</p>
-      <p>✅ <strong style='color:#4ade80'>Scenario Simulator</strong> — shows what happens if the school intervenes</p>
-    </div>
-    """, unsafe_allow_html=True)
-
-with col2:
-    st.markdown("### Platform at a Glance")
-    st.markdown("""
-    | Layer | Answers |
-    |-------|---------|
-    | 📊 Descriptive | What is happening? |
-    | 🔍 Diagnostic | Why is it happening? |
-    | 🤖 Predictive | What will happen? |
-    | 💡 Prescriptive | What should we do? |
-    """)
-    st.markdown("### 9 Custom Intelligence Indices")
-    indices = [
-        ("SSI","Student Success Index"),
-        ("EI", "Engagement Index"),
-        ("PSI","Parent Support Index"),
-        ("RAI","Resource Accessibility Index"),
-        ("WBI","Wellbeing Index"),
-        ("ARI","Academic Resilience Index"),
-        ("WRI","WAEC Readiness Index"),
-        ("SNI","Support Need Index"),
-        ("DVI","Dropout Vulnerability Index"),
-    ]
-    for code, name in indices:
-        st.markdown(f"**`{code}`** — {name}")
-
-st.markdown("---")
-st.info("👈 Use the sidebar to navigate to any section of the platform.")
+pg.run()
