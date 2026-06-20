@@ -5,10 +5,10 @@ import streamlit as st
 import joblib, os
 
 import pathlib
-   _DASHBOARD_DIR = pathlib.Path(__file__).parent
-   BASE           = _DASHBOARD_DIR
-   DATA_PATH      = str(BASE / "student_success_processed.csv")
-   MODELS_PATH    = str(BASE)
+_DASHBOARD_DIR = pathlib.Path(__file__).parent
+BASE           = _DASHBOARD_DIR          # everything sits flat, beside utils.py
+DATA_PATH      = str(BASE / "student_success_processed.csv")
+MODELS_PATH    = str(BASE)
 
 RISK_COLORS = {
     "Critical": "#dc2626", "High": "#ea580c",
